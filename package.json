@@ -8,7 +8,7 @@
     "start-dev": "nodemon ./src/index.ts"
   },
   "keywords": [],
-  "author": "github.com/mb-tousif",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/colors": "^1.2.1",

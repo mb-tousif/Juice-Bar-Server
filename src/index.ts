@@ -1,10 +1,11 @@
 import express from "express";
 import cors from "cors";
 import colors from "colors";
-import { serverPort } from "./config/config";
 import Connection from "./server";
+import dotenv from "dotenv";
+dotenv.config();
 
-const port = serverPort;
+const port = process.env.PORT || 4000;
 const app = express();
 app.use(express.json());
 app.use(cors({ origin: "*" }));
@@ -24,5 +25,5 @@ app.all("*", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running on PORT: ${port}`.blue);
+  console.log(`Server running on PORT: ${port}`);
 });
