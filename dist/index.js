@@ -24,4 +24,3 @@ app.all("*", (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on PORT: 🚀 ${port}`);
 });
-//# sourceMappingURL=index.js.map
