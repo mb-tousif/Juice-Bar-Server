@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -8,13 +17,14 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const url = process.env.MONGODB_CONNECTION_URL || "";
 mongoose_1.default.set("strictQuery", true);
-const Connection = async () => {
+const Connection = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        await mongoose_1.default.connect(url);
+        yield mongoose_1.default.connect(url);
         console.log("Juice Bar Database is Running");
     }
     catch (error) {
         console.log("Error while connecting with DB");
     }
-};
+});
 exports.default = Connection;
+//# sourceMappingURL=server.js.map
