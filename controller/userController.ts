@@ -61,11 +61,8 @@ export const login: RequestHandler = async (req, res) => {
 
     const { password: pwd, ...others } = user.toObject();
 
-    res.status(200).json({
-      status: "success",
-      message: "Successfully logged in",
-      user: others,
-    });
+    res.status(200).json({ user: others });
+    
   } catch (error) {
     res.status(500).json({
       status: "fail",
