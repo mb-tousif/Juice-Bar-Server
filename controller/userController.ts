@@ -1,10 +1,11 @@
 import { RequestHandler } from "express";
 import bcrypt from "bcrypt";
-import {
-  findUserByEmail,
-  getUsers,
-  signupService,
-} from "../service/userService";
+// import jwt from "jsonwebtoken";
+// const { sign } = jwt;
+import { findUserByEmail, getUsers, signupService } from "../service/userService";
+import { generateToken } from "../middleware/jwtToken";
+
+// const secret = process.env.JWT_TOKEN || "";
 
 export const signup: RequestHandler = async (req, res) => {
   try {
@@ -60,8 +61,8 @@ export const login: RequestHandler = async (req, res) => {
     }
 
     const { password: pwd, ...others } = user.toObject();
-
-    res.status(200).json({ user: others });
+    const token = generateToken(email)
+    res.status(200).json({ user: others, token });
     
   } catch (error) {
     res.status(500).json({

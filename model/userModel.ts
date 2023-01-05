@@ -5,9 +5,16 @@ import bcrypt from "bcrypt";
 export const userSchema = new mongoose.Schema(
   {
     id: String,
-    fullName: {
+    firstName: {
       type: String,
-      required: [true, "Please provide a first name"],
+      required: [true, "Please provide your First Fame"],
+      trim: true,
+      minLength: [3, "Name must be at least 3 characters."],
+      maxLength: [100, "Name is too large"],
+    },
+    lastName: {
+      type: String,
+      required: [true, "Please provide your Last Name"],
       trim: true,
       minLength: [3, "Name must be at least 3 characters."],
       maxLength: [100, "Name is too large"],
@@ -36,9 +43,9 @@ export const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: "client",
+      default: "Client",
       enum: {
-        values: ["client", "Admin"],
+        values: ["Client", "Admin"],
         message: "{VALUE} is not a correct Role for user!",
       },
       required: [true, "Role is required"],
