@@ -82,7 +82,7 @@ export const getAllUser: RequestHandler = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: "fail",
-      message: "Could not find any Users",
+      error: error,
     });
   }
 };
