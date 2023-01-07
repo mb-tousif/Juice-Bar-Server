@@ -15,11 +15,8 @@ export const signup: RequestHandler = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: "fail",
-      // message: "Signed up Failed",
-      message: error,
-      
+      message: "Signed up Failed",
     });
-    console.log(error);
   }
 };
 
