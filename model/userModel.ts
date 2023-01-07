@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcrypt";
+const saltRounds = 10;
 
 export const userSchema = new mongoose.Schema(
   {
@@ -33,10 +34,10 @@ export const userSchema = new mongoose.Schema(
         validator: (value: string) =>
           validator.isStrongPassword(value, {
             minLength: 6,
-            // minLowercase: 3,
-            // minNumbers: 1,
-            // minUppercase: 1,
-            // minSymbols: 1,
+            minLowercase: 3,
+            minNumbers: 1,
+            minUppercase: 1,
+            minSymbols: 1,
           }),
         message: "Password {VALUE} is not strong enough.",
       },
@@ -67,9 +68,8 @@ userSchema.pre("save", function (next) {
   }
 
   const password = this.password;
-  const hashedPassword = bcrypt.hashSync(password, 12);
+  const hashedPassword = bcrypt.hashSync(password, saltRounds);
   this.password = hashedPassword;
-
   next();
 });
 
