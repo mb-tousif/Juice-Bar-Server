@@ -12,6 +12,7 @@ const Connection = async () => {
     console.log("Juice Bar Database is Running");
   } catch (error) {
     console.log("Error while connecting with DB");
+    console.log(error);
   }
 };
 

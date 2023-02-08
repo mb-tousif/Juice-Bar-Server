@@ -3,11 +3,10 @@ const { sign } = jwt;
 import dotenv from "dotenv";
 
 dotenv.config();
-
 // how to generate jwt from node
 // require("crypto").randomBytes(64).toString("hex");
 
-const secret = process.env.JWT_TOKEN || ""
+const secret = process.env.JWT_TOKEN || "";
 
 export const generateToken = (email:string) => {
   const payload = {
