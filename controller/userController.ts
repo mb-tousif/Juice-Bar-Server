@@ -9,12 +9,12 @@ export const signup: RequestHandler = async (req, res) => {
     const result = await signupService(userInfo);
     await result.save();
     res.status(200).json({
-      status: "success",
+      status: "success 🎉.",
       message: "Successfully signed up",
     });
   } catch (error) {
     res.status(500).json({
-      status: "fail",
+      status: "fail 👀",
       message: "Signed up Failed",
     });
   }
@@ -26,7 +26,7 @@ export const login: RequestHandler = async (req, res) => {
 
     if (!email || !password) {
       return res.status(401).json({
-        status: "fail",
+        status: "fail 👀",
         error: "Please provide your credentials",
       });
     }
@@ -35,7 +35,7 @@ export const login: RequestHandler = async (req, res) => {
 
     if (!user) {
       return res.status(401).json({
-        status: "fail",
+        status: "fail 👀",
         error: "No user found. Please create an account",
       });
     }
@@ -44,14 +44,14 @@ export const login: RequestHandler = async (req, res) => {
 
     if (!isPasswordValid) {
       return res.status(403).json({
-        status: "fail",
+        status: "fail 👀",
         error: "Password is not correct",
       });
     }
 
     if (user.status == "Inactive") {
       return res.status(401).json({
-        status: "fail",
+        status: "fail 👀",
         error: "User is not an active user.",
       });
     }
@@ -66,7 +66,7 @@ export const login: RequestHandler = async (req, res) => {
     
   } catch (error) {
     res.status(500).json({
-      status: "fail",
+      status: "fail 👀",
       message: "Logged in Failed!",
     });
   }
@@ -76,12 +76,12 @@ export const getAllUser: RequestHandler = async (req, res) => {
   try {
     const users = await getUsers();
     res.status(200).json({
-      status: "success",
+      status: "success 🎉",
       data: users,
     });
   } catch (error) {
     res.status(500).json({
-      status: "fail",
+      status: "fail 👀",
       error: error,
     });
   }

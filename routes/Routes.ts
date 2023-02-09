@@ -1,5 +1,6 @@
 import express from "express";
 import { getAllUser, login, signup } from "../controller/userController";
+import { getAllBowlsData, postBowlData } from "../controller/bowlController";
 
 const router = express.Router();
 
@@ -12,8 +13,8 @@ router.post("/login", login);
 router.get("/allJuices", );
 router.post("/juice", );
 // Bowls Routes
-router.get("/allBowls", );
-router.post("/bowl", );
+router.get("/allBowls", getAllBowlsData);
+router.post("/bowl", postBowlData);
 // Coffees Routes
 router.get("/allCoffees", );
 router.post("/coffee", );
