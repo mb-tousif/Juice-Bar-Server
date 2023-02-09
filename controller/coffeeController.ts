@@ -1,7 +1,6 @@
 import { RequestHandler } from "express";
 import { getAllCoffees, postCoffee } from "../service/coffeeService";
 
-
 export const getAllCoffeesData: RequestHandler = async (req, res) => {
     try {
       const coffees = await getAllCoffees();
